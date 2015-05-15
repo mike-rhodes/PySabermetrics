@@ -6,7 +6,7 @@ import json
 import bs4 as bs
 
 # Function to pull data
-def get_game_summary_data(s_month, s_day, s_year, e_month = None, e_day = None, e_year = None):
+def get_games_summary_data(s_month, s_day, s_year, e_month = None, e_day = None, e_year = None):
     """
     Returns a JSON file containing the summary of the games played on a specified day. Currently working on
     allowing the user to specify a date range.
@@ -29,12 +29,3 @@ def get_game_summary_data(s_month, s_day, s_year, e_month = None, e_day = None, 
     mlbam_response = requests.get(mlbam_url)
 
     return json.loads(mlbam_response.content)
-
-# print json.dumps(get_game_summary_data(5, 10, 2015), indent=4, sort_keys=True)
-
-game_summary_data = get_game_summary_data(5, 10, 2015)
-
-with open('myfile.json', 'a') as the_file:
-    json.dump(game_summary_data, the_file)
-# f.close()
-print game_summary_data['data']
